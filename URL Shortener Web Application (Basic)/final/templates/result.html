@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block title%}
+shortedurl
+{% endblock %}
+{% block content %}
+<body style="background-color:rgb(187, 44, 80)"
+<h1>URL Shortened!</h1>
+<p>Your shortened URL is:</p>
+    <input type="text" id="short" value="{{short_url }}" size="50">
+    <button onclick="copy()">copy</button>
+    <p>Original URL:</p>
+    <a href="{{ original_url }}">{{ original_url }}</a>
+<script>
+    function copy(){
+        var copyText=document.getElementById("short");
+        copyText.select();
+        copyText.setSelectionRange(0,99999);
+        navigator.clipboard.writeText(copyText.value);
+        alert("copied the url:"+ copyText.value);
+    }
+</script>
+{% endblock %}
+
